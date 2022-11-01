@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="form-container">
+            <div class="form-header">
+                <h3>Casdatro:</h3>
+                <h3>Preecha os campos a baixo</h3>
+            </div>
+            <form>
+                <span class="tipo_campo">Nome:</span>
+                <input id="nome_input" type="text" placeholder="Seu nome">
+                
+                <span class="tipo_campo">E-mail:</span>
+                <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+                
+                <span class="tipo_campo">Senha:</span>
+                <input id="senha_input" type="password" placeholder="******">
+                
+                <span class="tipo_campo">Confirmação da Senha:</span>
+                <input id="confirmacao_senha_input" type="password" placeholder="******">
+
+                <button class="btn" onclick="cadastrar()">Cadastrar</button>
+            </form>
+                <p>Já possui uma conta? <a href="login.html">Logar</a></p>
+
+        </div>
+        <div class="form-img"></div>
+    </div>
+</body>
+
+</html>
