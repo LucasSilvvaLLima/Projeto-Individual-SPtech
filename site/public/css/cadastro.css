@@ -33,7 +33,7 @@ body {
 
 .form-img {
     flex-grow: 1;
-    background-image: url("assets/form-cadastro.jpg");
+    background-image: url("../assets/form-cadastro.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
@@ -82,6 +82,7 @@ h3 {
 p {
     font-size: medium;
 }
+
 a {
     text-decoration: none;
     color: var(--bg);
@@ -95,8 +96,9 @@ input {
     padding: 12px;
     border-radius: 8px;
 }
-input::placeholder{
-    color:var(--form-bg);
+
+input::placeholder {
+    color: var(--form-bg);
 }
 
 button {
@@ -111,3 +113,32 @@ button {
 button:hover {
     transform: scale(0.96);
 }
+
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+}
+
+.loading-div img {
+    height: 80px;
+    width: 80px;
+}
+
+.card_erro {
+    display: none;
+    background-color: #fff;
+    color: black;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #e6005a 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+  }
+  

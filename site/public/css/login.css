@@ -4,6 +4,7 @@
     --form-bg: #0a2d61;
     --bg: #e8670f;
     --input-bg: #3b79d7;
+    --erro-bg: #ea0000;
 }
 
 * {
@@ -33,7 +34,7 @@ body {
 
 .form-img {
     flex-grow: 1;
-    background-image: url("assets/form-login.jpg");
+    background-image: url("../assets/form-login.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -51,10 +52,17 @@ body {
     background-color: var(--form-bg);
     color: var(--text);
 }
-
 .form-header {
     padding: 20px 0;
     border-top: solid 1px var(--bg);
+}
+.mensagem-erro{
+    background-color: var(--erro-bg);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;  
+    text-align: center;
 }
 
 .form-header a {
@@ -96,6 +104,7 @@ input {
 }
 input::placeholder{
     color:var(--form-bg);
+    text-align: center;
 }
 
 button {
@@ -110,3 +119,16 @@ button {
 button:hover {
     transform: scale(0.96);
 }
+
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    display: flex;
+    align-items: flex-start;
+    height: 80px;
+    width: 80px;
+  }
