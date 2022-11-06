@@ -38,10 +38,14 @@
                 <img src="./assets/circle-loading.gif" id="loading-gif">
             </div>
 
-            <div class="mensagem-erro">
-                <div id="div_erros_login"></div>
+            <div class="mensagem-erro" id="mensagemErro">
                 <div id="cardErro">
                     <span id="mensagem_erro"></span>
+                    <div id="div_erros_login"></div>
+                </div>
+                <div id="cardErro2">
+                    <div id="div_erros_login"></div>
+                    <span id="mensagem_erro2"></span>
                 </div>
             </div>
         </div>
@@ -62,14 +66,15 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
-            setInterval(sumirMensagem, 5000)
+            
+            cardErro2.style.display = "block"
+            mensagem_erro2.innerHTML = "Preencha todos os campos";
+            setInterval(sumirMensagem, 6000)
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 6000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -99,7 +104,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./home/pagina_inicial.html";
                     }, 2500); // apenas para exibir o loading
 
                 });
@@ -107,9 +112,11 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                
                 resposta.text().then(texto => {
                     console.error(texto);
+                    cardErro.style.display = "block"
+                    setInterval(sumirMensagem, 6000)
                     finalizarAguardar(texto);
                 });
             }
@@ -123,6 +130,7 @@
 
     function sumirMensagem() {
         cardErro.style.display = "none"
+        cardErro2.style.display = "none"
     }
 
 </script>

@@ -42,7 +42,7 @@
 
                 <button class="btn" onclick="cadastrar()">Cadastrar</button>
             </form>
-                <p>Já possui uma conta? <a href="login.html">Logar</a></p>
+                <p>Já possui uma conta? <a href="index.html ">Logar</a></p>
                 <div id="div_aguardar" class="loading-div">
                     <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
                 </div>
@@ -85,6 +85,13 @@
             return false;
         }
         else {
+            setInterval(sumirMensagem, 5000)
+        }
+        
+        if (senhaVar != confirmacaoSenhaVar) {
+            alert("A SENHA ESTA DIFERENTE")
+            return false;
+        }else{
             setInterval(sumirMensagem, 5000)
         }
 
