@@ -42,42 +42,30 @@ button{
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  color: #fff;
+  color: rgb(0, 0, 0);
   background-color: #0a2d61;
   min-width: 120px;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
 }
 .button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  color: #fff;
+  color: rgb(0, 0, 0);
   background-color: #0a2d61;
   min-width: 120px;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   text-align: center;
-}
-
-.button svg {
-  display: inline-block;
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
-  fill: #fff;
 }
 
 .button span {
   display: none;
 }
 
-@media (min-width: 600px) {
-  .button span {
-    display: initial;
-  }
-}
 
 .button--icon {
   min-width: initial;
@@ -91,6 +79,10 @@ button{
 .brand {
   font-weight: bold;
   font-size: 20px; }
+.menu{
+  font-weight: bold;
+  font-size: 15px;
+}
 
 .site-header {
   position: relative;
