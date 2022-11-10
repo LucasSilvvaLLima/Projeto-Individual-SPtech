@@ -64,7 +64,45 @@ body {
     border-bottom-right-radius: 10px;  
     text-align: center;
 }
-
+.card_erro {
+    display: none;
+    justify-items: center;
+    background-color: var(--form-bg);
+    width: 230px;
+    height: 55px;
+    position: fixed;
+    border: var(--bg) 4px solid;
+    padding: 10px;
+    margin-right: 10%;
+    color: var(--text);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;  
+    text-align: center;
+  }
+  .card_erro2 {
+    display: none;
+    justify-items: center;
+    background-color: var(--form-bg);
+    width: 230px;
+    height: 55px;
+    position: fixed;
+    border: var(--bg) 4px solid;
+    padding: 10px;
+    margin-right: 10%;
+    color: var(--text);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;  
+    text-align: center;
+  }
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+  }
+  
 .form-header a {
     color: var(--primary-text);
     font-weight: bold;
@@ -91,8 +129,11 @@ p {
 a {
     text-decoration: none;
     color: var(--bg);
-
 }
+button a {
+    text-decoration: none;
+    color: black;
+  }
 
 input {
     background-color: var(--input-bg);

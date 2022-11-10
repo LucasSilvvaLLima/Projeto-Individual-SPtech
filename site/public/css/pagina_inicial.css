@@ -1,0 +1,68 @@
+/* INICIO BANNER ANIMES.VALUES() */
+#top-section-main{
+    background-image: url("../assets/banner.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+#top-section-content{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+#top-section-content h1{
+    font-size: 3.5em;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-top: 90px;
+}
+#top-section-content p{
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+
+}
+/* FIM BANNER ANIMES.VALUES() */
+
+/* INICIO O QUE É ANIMES VALUES */
+
+#feature-section{
+    padding-top: 100px;
+}
+.feature-section-title{
+    width: 70%;
+    text-align: center;
+    font-weight: 200;
+    line-height: 1.5em;
+    margin: auto;
+}
+
+.feature-content{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding-top: 100px;
+}
+.col-3{
+    width: 33%;
+    float: left;
+}
+.feature-content .col-3 p{
+    font-size: .9em;
+    letter-spacing: 1px;
+}
+.feature-content .col-3{
+    padding: 10px;
+    width: 30%;
+}
+.col-2{
+    float: left;
+    width: 48%;
+}

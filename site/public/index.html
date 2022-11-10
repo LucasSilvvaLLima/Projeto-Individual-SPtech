@@ -9,6 +9,7 @@
     <title>Login</title>
 
     <script src="./js/funcoes.js"></script>
+
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,30 +25,31 @@
 
         <div class="form-container">
             <div class="form-header">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro">
+                    <span id="div_erros_login" style="width: 230px; height: 55px; font-weight: 500; font-size: 20px; justify-items: center;"></span>
+                </span>
+                </div>
+
+             
                 <h3>Bem-vindo!</h3>
                 <h3>Faça o seu Login:</h3>
+        
             </div>
             <form>
                 <input id="email_input" placeholder="Digite seu Email" />
                 <input id="senha_input" placeholder="Digite sua Senha" type="password" />
-                <button type="submit" form="form" value="Submit" onclick="entrar()">Continuar</button>
+                <button type="submit" form="form" value="Submit" onclick="entrar()"><a href="##">Continuar</a></button>
             </form>
             <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
 
+             
             <div id="div_aguardar" class="loading-div">
                 <img src="./assets/circle-loading.gif" id="loading-gif">
             </div>
 
-            <div class="mensagem-erro" id="mensagemErro">
-                <div id="cardErro">
-                    <span id="mensagem_erro"></span>
-                    <div id="div_erros_login"></div>
-                </div>
-                <div id="cardErro2">
-                    <div id="div_erros_login"></div>
-                    <span id="mensagem_erro2"></span>
-                </div>
-            </div>
+
+
         </div>
 
 
@@ -67,9 +69,9 @@
 
         if (emailVar == "" || senhaVar == "") {
             
-            cardErro2.style.display = "block"
-            mensagem_erro2.innerHTML = "Preencha todos os campos";
-            setInterval(sumirMensagem, 6000)
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha os campos corretamente";
+            setInterval(sumirMensagem, 3000)
             finalizarAguardar();
             return false;
         }

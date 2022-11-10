@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/pagina_inicial.css">
 
     <script src="../js/funcoes.js"></script>
-    <title>Document</title>
+    <title>Pagina Inicial</title>
 </head>
 
 <body onload="validarSessao(), atualizacaoPeriodica()"> 
-
+    
+    <!-- INICIO DA HEADER -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
           <nav class="nav">
@@ -27,12 +29,43 @@
               <li class="nav__item"><a href="#">Contact</a></li>
             </ul>
           </nav>
-          <span href="#" class="brand">Bem Vindo, <span id="b_usuario">usuário</span>!</span>
+          <span href="#" class="brand">Bem Vindo <span id="b_usuario">usuário</span></span>
           <a href="../index.html" class="button button--icon" aria-label="Sign in">
             <img src="../assets/sair.png" alt=""style="width: 40px; display: flex; align-items: center">
           </a>
         </div>
-      </header>    
+    </header>    
+    <!-- FIM DA HEADER -->
+    
+    <!-- BANNER -->
+    <div id="top-section-main">
+        <div id="top-section-content"></div>
+    </div>
+    <!-- BANNER -->
+
+
+    <!-- O QUE É ANIMES VALUES -->
+    <div id="feature-section">
+        <h1 class="feature-section-title">Animes.values() foi para mostrar que podemos aprender lições para toda uma vida assistindo animes, pois os animes que mais fazem sucesso são aqueles que estão rechados de <span style="background-color: #e8670f; color: #ffffff; padding: 2px; border-radius: 8px;">Bons Valores</span> e <span style="background-color: #e8670f; color: #ffffff; padding: 2px; border-radius: 8px;">lições de vida.</span></h1>
+        <div class="feature-content">
+            <div class="col-3">
+                <img style="width: 100%;" src="../assets/card1.jpg">
+                <h3>Rock Lee (Naruto)</h3> 
+                <p>"FRASE SOBRE O PERSONAGEM" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, incidunt expedita. Necessitatibus recusandae obcaecati vel voluptates mollitia est at consectetur nisi quidem, maiores facere. Repudiandae unde voluptates quaerat ipsum ratione?</p>
+            </div>
+            <div class="col-3">
+                <img style="width: 100%" src="../assets/card2.jpg">
+                <h3>Ash Ketchum (Pokemon)</h3>
+                <p>"FRASE SOBRE O PERSONAGEM" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, incidunt expedita. Necessitatibus recusandae obcaecati vel voluptates mollitia est at consectetur nisi quidem, maiores facere. Repudiandae unde voluptates quaerat ipsum ratione?."</p>
+            </div>
+            <div class="col-3">
+                <img style="width: 100%" src="../assets/card3.jpg">
+                <h3>Monkey D. Luffy (One Piece)</h3>
+                <p>"FRASE SOBRE O PERSONAGEM" Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, incidunt expedita. Necessitatibus recusandae obcaecati vel voluptates mollitia est at consectetur nisi quidem, maiores facere. Repudiandae unde voluptates quaerat ipsum ratione?"</p>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 

@@ -40,7 +40,7 @@
                 <span class="tipo_campo">Confirmação da Senha:</span>
                 <input id="confirmacao_senha_input" type="password" placeholder="******">
 
-                <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                <button class="btn" onclick="cadastrar()"><a href="##">Cadastrar</a></button>
             </form>
                 <p>Já possui uma conta? <a href="index.html ">Logar</a></p>
                 <div id="div_aguardar" class="loading-div">
@@ -49,16 +49,14 @@
 
         </div>
         <div class="form-img">
-
+            <br>
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+    
+            <div id="div_erros_login"></div>
         </div>
         
-        <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
-        </div>
-
-        <div id="div_erros_login">
-
-        </div>
         
     </div>
     
@@ -78,9 +76,9 @@
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            alert("PREENCHA TODOS OS CAMPOS")
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
+            setInterval(sumirMensagem, 3000)
             finalizarAguardar();
             return false;
         }
@@ -89,7 +87,10 @@
         }
         
         if (senhaVar != confirmacaoSenhaVar) {
-            alert("A SENHA ESTA DIFERENTE")
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Confirme a senha corretamenta!";
+            setInterval(sumirMensagem, 5000)
+            finalizarAguardar();
             return false;
         }else{
             setInterval(sumirMensagem, 5000)
@@ -114,12 +115,10 @@
 
             if (resposta.ok) {
                 cardErro.style.display = "block";
-
-                alert("Cadastro realizado com sucesso!")
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout( function () {
-                    window.location = "login.html";
+                    window.location = "index.html";
                 }, "5000");
                 
                 limparFormulario();
