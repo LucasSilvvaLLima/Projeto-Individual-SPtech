@@ -141,7 +141,6 @@ button:hover {
 
 .card_erro {
     display: none;
-    display: flex;
     justify-items: center;
     background-color: var(--form-bg);
     width: 230px;
