@@ -57,6 +57,10 @@
 .col-3{
     width: 33%;
     float: left;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
     /* background-color: #c7def184; */
     background-color: #e07730;
 }
@@ -70,8 +74,9 @@
     width: 30%;
 }
 .col-2{
-    float: left;
     width: 48%;
+    float: left;
+    
 }
 
 /* BANNER MEUS VALORES */
@@ -97,6 +102,10 @@
 }
 .showcase1pic{
     width: 80%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 .feature-text{
     padding-top: 100px;
@@ -173,9 +182,12 @@
 /* FOOTER */
 footer{
     clear: both;
-    height: 500px;
-    background-image: url("../assets/footer\ image.jpg");
+    height: 600px;
+    background-image: url("../assets/footer.png");
     background-position: 100% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 .social-footer{
     width: 33%;
@@ -183,7 +195,7 @@ footer{
     height: 40%;
 }
 .social-footer:hover{
-    background-color: #ffffff;
+    background-color: #e07630c7;
     opacity: .5;
 }
 .center{
@@ -192,8 +204,9 @@ footer{
     padding-top: 60px;
 }
 .copyright{
-    font-size: .9em;
+    font-size: 20px;
     text-align: center;
     display: block;
-    padding-top: 15px;
+    padding-top: 5px;
+    color: #ffffff;
 }

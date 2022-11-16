@@ -34,6 +34,9 @@ body {
 }
 
 .form-img {
+    display: flex;
+    padding-top: 1%;
+    padding-left: 1%;
     flex-grow: 1;
     background-image: url("../assets/form-cadastro.jpg");
     background-size: cover;
@@ -41,7 +44,6 @@ body {
     background-repeat: no-repeat;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    /* width: 80%; */
 }
 
 .form-container {
@@ -109,6 +111,16 @@ input {
     border: none;
     padding: 12px;
     border-radius: 8px;
+}
+
+/* Cor do background da input */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset;
+}
+
+/* Cor do texto do autocomplete */
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(0, 0, 0) !important;
 }
 
 input::placeholder {

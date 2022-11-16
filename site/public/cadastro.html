@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Cadastro</title>
 
     <script src="./js/funcoes.js"></script>
-    
-    
+
+
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="stylesheet" href="css/cadastro.css">
-    
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -27,25 +27,25 @@
                 <h3>Casdatro:</h3>
                 <h3>Preecha os campos a baixo</h3>
             </div>
-            <form>
+            <!-- <form> -->
                 <span class="tipo_campo">Nome:</span>
-                <input id="nome_input" type="text" placeholder="Seu nome">
-                
-                <span class="tipo_campo">E-mail:</span>
-                <input id="email_input" type="text" placeholder="meuemail@provedor.com">
-                
-                <span class="tipo_campo">Senha:</span>
-                <input id="senha_input" type="password" placeholder="******">
-                
-                <span class="tipo_campo">Confirmação da Senha:</span>
-                <input id="confirmacao_senha_input" type="password" placeholder="******">
+                <input id="nome_input" type="text" placeholder="Seu nome" onkeyup="nomeBackground()">
 
-                <button class="btn" onclick="cadastrar()"><a href="##">Cadastrar</a></button>
-            </form>
-                <p>Já possui uma conta? <a href="index.html ">Logar</a></p>
-                <div id="div_aguardar" class="loading-div">
-                    <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
-                </div>
+                <span class="tipo_campo">E-mail:</span>
+                <input id="email_input" type="text" placeholder="meuemail@provedor.com" onkeyup="emailBackground()">
+
+                <span class="tipo_campo">Senha:</span>
+                <input id="senha_input" type="password" placeholder="******" onkeyup="senhaBackground()">
+
+                <span class="tipo_campo">Confirmação da Senha:</span>
+                <input id="confirmacao_senha_input" type="password" placeholder="******" onkeyup="confSenhaBackground()">
+
+                <button class="btn" onclick="cadastrar()">Cadastrar</button>
+            <!-- </form> -->
+            <p>Já possui uma conta? <a href="index.html ">Logar</a></p>
+            <div id="div_aguardar" class="loading-div">
+                <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
+            </div>
 
         </div>
         <div class="form-img">
@@ -53,18 +53,31 @@
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
-    
+
             <div id="div_erros_login"></div>
         </div>
-        
-        
+
+
     </div>
-    
+
 </body>
 
 </html>
 
 <script>
+    // FUNÇÕES PARA MUDAR A COR DA INPUT PARA AZUL
+    function nomeBackground() {
+        nome_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
+    function emailBackground() {
+        email_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
+    function senhaBackground() {
+        senha_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
+    function confSenhaBackground() {
+        confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
     function cadastrar() {
         aguardar();
 
@@ -74,25 +87,45 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        var algumVazio = nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == ""
+        if (algumVazio) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
-            setInterval(sumirMensagem, 3000)
+
+            // SE O CAMPO ESTIVER VAZIO A INPUT FICA VERMELHA
+            if (nomeVar == "") {
+                nome_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
+            if (emailVar == "") {
+                email_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
+            if (senhaVar == "") {
+                senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
+            if (confirmacaoSenhaVar == "") {
+                confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
+
+            setInterval(sumirMensagem, 5000)
             finalizarAguardar();
             return false;
         }
         else {
             setInterval(sumirMensagem, 5000)
         }
-        
+
         if (senhaVar != confirmacaoSenhaVar) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Confirme a senha corretamenta!";
+            mensagem_erro.innerHTML = "CONFIRMAÇÃO DE SENHA INCORRETA";
             setInterval(sumirMensagem, 5000)
             finalizarAguardar();
+            senha_input.value = ""
+            confirmacao_senha_input.value = ""
+            senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+
             return false;
-        }else{
+        } else {
             setInterval(sumirMensagem, 5000)
         }
 
@@ -117,14 +150,18 @@
                 cardErro.style.display = "block";
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-                setTimeout( function () {
+                setTimeout(function () {
                     window.location = "index.html";
-                }, "5000");
-                
+                }, "3500");
+
                 limparFormulario();
                 finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
+                setInterval(sumirMensagem, 5000)
+                finalizarAguardar();
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);

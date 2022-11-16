@@ -21,26 +21,27 @@
 
 <body>
     <div class="main">
-        <div class="form-img"></div>
+        <div class="form-img">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro">
+                    <span id="div_erros_login" style="width: 230px; height: 55px; font-weight: 500; font-size: 20px; justify-items: center;"></span>
+                </span>
+            </div>
+        </div>
 
         <div class="form-container">
             <div class="form-header">
-                <div class="card_erro" id="cardErro">
-                    <span id="mensagem_erro">
-                    <span id="div_erros_login" style="width: 230px; height: 55px; font-weight: 500; font-size: 20px; justify-items: center;"></span>
-                </span>
-                </div>
 
              
                 <h3>Bem-vindo!</h3>
                 <h3>Faça o seu Login:</h3>
         
             </div>
-            <form>
-                <input id="email_input" placeholder="Digite seu Email" />
-                <input id="senha_input" placeholder="Digite sua Senha" type="password" />
-                <button type="submit" form="form" value="Submit" onclick="entrar()"><a href="##">Continuar</a></button>
-            </form>
+            <!-- <form> -->
+                <input id="email_input" placeholder="Digite seu Email"  onkeyup="emailBackground()"/>
+                <input id="senha_input" placeholder="Digite sua Senha" type="password" onkeyup="senhaBackground()"/>
+                <button type="submit" form="form" value="Submit" onclick="entrar()">Continuar</button>
+            <!-- </form> -->
             <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
 
              
@@ -59,7 +60,12 @@
 </html>
 
 <script>
-
+    function emailBackground(){
+        email_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
+    function senhaBackground(){
+        senha_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
+    }
 
     function entrar() {
         aguardar();
@@ -71,7 +77,13 @@
             
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha os campos corretamente";
-            setInterval(sumirMensagem, 3000)
+            setInterval(sumirMensagem, 5000)
+            if (emailVar == "") {
+                email_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
+            if (senhaVar == "") {
+                senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+            }
             finalizarAguardar();
             return false;
         }
@@ -115,12 +127,20 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
                 
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Email e/ou senha inválido(s)";
+                email_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+                senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
+                email_input.value = ``
+                senha_input.value = ``
+
                 resposta.text().then(texto => {
                     console.error(texto);
                     cardErro.style.display = "block"
                     setInterval(sumirMensagem, 6000)
                     finalizarAguardar(texto);
                 });
+                
             }
 
         }).catch(function (erro) {

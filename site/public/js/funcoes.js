@@ -13,7 +13,7 @@ function validarSessao() {
 
         // finalizarAguardar();
     } else {
-        window.location = "../login.html";
+        window.location = "../index.html";
     }
 }
 
@@ -21,7 +21,7 @@ function limparSessao() {
     // aguardar();
     sessionStorage.clear();
     // finalizarAguardar();
-    window.location = "../login.html";
+    window.location = "../index.html";
 }
 
 // carregamento (loading)
@@ -41,14 +41,14 @@ function finalizarAguardar(texto) {
 }
 
 
-// modal
-function mostrarModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "flex";
-}
+// // modal
+// function mostrarModal() {
+//     var divModal = document.getElementById("div_modal");
+//     divModal.style.display = "flex";
+// }
 
-function fecharModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "none";
-}
+// function fecharModal() {
+//     var divModal = document.getElementById("div_modal");
+//     divModal.style.display = "none";
+// }
 
