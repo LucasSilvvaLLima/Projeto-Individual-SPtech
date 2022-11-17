@@ -78,6 +78,8 @@
     function confSenhaBackground() {
         confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
     }
+
+        // ################################ CRIAR A FUNÇÃO CADASTRAR ANIME  ################################
     function cadastrar() {
         aguardar();
 
@@ -128,6 +130,9 @@
         } else {
             setInterval(sumirMensagem, 5000)
         }
+
+
+        // ################################ IR PARA ROUTS usuario/cadastrarAnime ################################
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {

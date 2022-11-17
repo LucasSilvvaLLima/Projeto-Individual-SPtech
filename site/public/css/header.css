@@ -69,6 +69,7 @@ button{
 .button--icon {
   min-width: initial;
   padding: 0.5rem;
+  cursor: pointer;
 }
 
 /* 
