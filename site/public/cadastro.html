@@ -119,7 +119,7 @@
         if (senhaVar != confirmacaoSenhaVar) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "CONFIRMAÇÃO DE SENHA INCORRETA";
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 6000)
             finalizarAguardar();
             senha_input.value = ""
             confirmacao_senha_input.value = ""
@@ -128,7 +128,7 @@
 
             return false;
         } else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 6000)
         }
 
 
