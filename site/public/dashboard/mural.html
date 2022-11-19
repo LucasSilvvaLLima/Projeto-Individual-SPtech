@@ -111,9 +111,17 @@
     var anime = ``
     var ranking = []
     var votos = 0
-    var top1 = 0
-    var top2 = 0
-    var top3 = 0
+    
+    var primeiroLugar
+    var segundoLugar = {
+        nome: ``,
+        votos: 0
+    }
+    var terceiroLugar = {
+        nome: ``,
+        votos: 0
+    }
+
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
@@ -204,7 +212,7 @@
                     var feed = document.getElementById("feed_container");
                     feed.innerHTML = "";
                     var elemento = ``
-                    var animeRepetido = ``
+
                     for (let i = resposta.length - 1; i >= 0; i--) {
                         var publicacao = resposta[i];
                         elemento = publicacao.titulo
@@ -236,10 +244,10 @@
                         } else if (animes.indexOf(anime) < 0) {
                             animes.push(anime)
                         }
-                        for(var x = 0; x < numeroAnimes.length; x++){
-                            if(elemento == numeroAnimes[x]){
+
+                        for (var x = 0; x < numeroAnimes.length; x++) {
+                            if (elemento == numeroAnimes[x]) {
                                 votos++
-                                animeRepetido = numeroAnimes[x]
                             }
                         }
 
@@ -250,6 +258,22 @@
 
                         ranking.push(votacao)
 
+                        primeiroLugar = ranking.reduce(function (prev, current) {
+                            return prev.votos > current.votos ? prev : current;
+                        });
+
+                        for(var y = 0; y < ranking.length; y++){
+                            if(ranking[y].votos <= primeiroLugar.votos && ranking[y].votos > terceiroLugar.votos && ranking[y].nome != primeiroLugar.nome && ranking[y].nome != terceiroLugar.nome){
+                                segundoLugar.nome = ranking[y].nome
+                                segundoLugar.votos = ranking[y].votos
+                            }
+                        }
+                        for(var z = 0; z < ranking.length; z++){
+                            if(ranking[z].votos <= segundoLugar.votos && ranking[z].votos <= primeiroLugar.votos && ranking[z].nome != segundoLugar.nome && ranking[z].nome != primeiroLugar.nome){
+                                terceiroLugar.nome = ranking[z].nome
+                                terceiroLugar.votos = ranking[z].votos 
+                            }
+                        }
                         divPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
