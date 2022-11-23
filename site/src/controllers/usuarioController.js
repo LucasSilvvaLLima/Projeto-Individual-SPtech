@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -74,7 +74,7 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha)
             .then(
@@ -94,7 +94,38 @@ function cadastrar(req, res) {
     }
 }
 
-    // ALTERAR A FUNÇÃO CADASTRAR ANIME
+function cadastrarFavorito(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo pagina_inicial.html 
+    var favorito = req.body.favoritoServer;
+    var idUsuario = req.params.idUsuario;
+
+    // Faça as validações dos valores
+    if (favorito == undefined) {
+        res.status(400).send("Seu valore está undefined!");
+    }else if(idUsuario == undefined){
+        res.status(403).send("O id do usuário está indefinido!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarFavorito(favorito, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+}
+// ALTERAR A FUNÇÃO CADASTRAR ANIME
 // function cadastrarAnime(req, res) {
 //     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 //     var nome = req.body.nomeServer;
@@ -109,7 +140,7 @@ function cadastrar(req, res) {
 //     } else if (senha == undefined) {
 //         res.status(400).send("Sua senha está undefined!");
 //     } else {
-        
+
 //         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
 //         usuarioModel.cadastrar(nome, email, senha)
 //             .then(
@@ -132,6 +163,7 @@ function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
+    cadastrarFavorito,
     listar,
     testar
 }

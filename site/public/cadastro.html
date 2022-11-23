@@ -79,7 +79,7 @@
         confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px #3b79d7 inset;`
     }
 
-        // ################################ CRIAR A FUNÇÃO CADASTRAR ANIME  ################################
+        // ################################ CRIAR A FUNÇÃO CADASTRAR FAVORITO  ################################
     function cadastrar() {
         aguardar();
 
@@ -89,6 +89,7 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
         var algumVazio = nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == ""
         if (algumVazio) {
             cardErro.style.display = "block"
@@ -107,7 +108,6 @@
             if (confirmacaoSenhaVar == "") {
                 confirmacao_senha_input.style = `-webkit-box-shadow: 0 0 0 30px rgb(217, 48, 48) inset;`
             }
-
             setInterval(sumirMensagem, 5000)
             finalizarAguardar();
             return false;
@@ -132,7 +132,7 @@
         }
 
 
-        // ################################ IR PARA ROUTS usuario/cadastrarAnime ################################
+        // ################################ IR PARA ROUTS usuario/cadastrarFavorito ################################
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {

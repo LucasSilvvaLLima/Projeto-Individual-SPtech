@@ -131,15 +131,23 @@
             <div class="showcase">
                 <div class="col-2">
                     <div class="feature-text">
-                        <h1 class="section-title">Das lições acima <br>
-                        Qual voê mais gostou?
-                        <select name="" id="">
-                            <option value="">XXXXXX</option>
-                            <option value="">XXXXXX</option>
-                            <option value="">XXXXXX</option>
-                            <option value="">XXXXXX</option>
+                        <h1 class="section-title">Dos valores acima <br>
+                        Qual voê mais se identificou?
+                        <select name="" id="sel_favorito">
+                            <option value="">Escolha o seu favorito</option>
+                            <option value="Persistência">Persistência</option>
+                            <option value="Resiliência">Resiliência</option>
+                            <option value="Iniciativa">Iniciativa</option>
+                            <option value="Trabalho em Equipe">Trabalho em Equipe</option>
+                            <option value="Respeito aos Mestres">Respeito aos Mestres</option>
                         </select>
-                    </h1>
+                        
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+
+            <div id="div_erros_login"></div>
+                    </h1><button onclick="cadastrarFavorito()">CADASTRAR</button>
                         
                     </div>
                 </div>
@@ -200,6 +208,73 @@
 </html>
 
 <script>
+
+function cadastrarFavorito() {
+        // aguardar();
+        idUsuario = sessionStorage.ID_USUARIO;
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var favorito = sel_favorito.value;
+
+        if (favorito == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = " SELECIONE O SEU FAVORITO ";
+
+            setInterval(sumirMensagem, 5000)
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // ################################ IR PARA ROUTS usuario/cadastrarFavorito ################################
+
+        // Enviando o valor da nova input
+        fetch(`/usuarios/cadastrarFavorito/${idUsuario}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                favoritoServer: favorito
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(function () {
+                    window.location = "pagina_inicial.html";
+                }, "3500");
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
+                setInterval(sumirMensagem, 5000)
+                finalizarAguardar();
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
 
     // function atualizacaoPeriodica() {
     //     obterdados(1);
