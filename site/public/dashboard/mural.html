@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./dashboards.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/podium.css">
     <script src="../js/funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,23 +20,14 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body onload="validarSessao(), atualizarFeed()" class="mural">
     <!-- <body onload="validarSessao()"> -->
 
     <!-- INICIO DA HEADER -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
             <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    <span class="menu">menu</span>
-                </button>
-                <ul class="nav__wrapper">
-                    <li class="nav__item"><a href="pagina_inicial.html">Home</a></li>
-                    <li class="nav__item"><a href="#">Sobre Nós</a></li>
-                    <li class="nav__item"><a href="#">Services</a></li>
-                    <li class="nav__item"><a href="#">Hire us</a></li>
-                    <li class="nav__item"><a href="#">Contact</a></li>
-                </ul>
+
             </nav>
             <span href="#" class="brand">Bem Vindo <span id="b_usuario">usuário</span></span>
             <a href="./pagina_inicial.html" class="button button--icon" aria-label="Sign in">
@@ -44,29 +36,76 @@
         </div>
     </header>
     <!-- FIM DA HEADER -->
+    <br>
 
+    <!-- INICIO KPI'S -->
+    <div class="container podium" style="font-family: sans-serif;">
+        <div class="podium__item">
+            <p class="podium__city">
+            <h2 id="b_nomeSegundoLugar" style="text-align: center;">?</h2>
+            </p>
+            <div class="podium__rank second"><span id="b_segundoLugar">?</span></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="podium__item">
+            <p class="podium__city">
+            <h2 id="b_nomePrimeiroLugar" style="text-align: center;">?</h2>
+            </p>
+            <div class="podium__rank first">
+                <p style="color: #000; font-size: 60px; font-weight: 600; text-align: center;"><span
+                        id="b_primeiroLugar">?</span>
+                </p>
+            </div>
+            <h1 style="text-align: center;  text-decoration: underline;">Top 3 Animes</h1>
+        </div>
+        <div class="podium__item">
+            <p class="podium__city">
+            <h2 id="b_nomeTerceiroLugar" style="text-align: center" ;>?</h2>
+            </p>
+            <div class="podium__rank third"><span id="b_terceiroLugar">?</span></div>
+            <div class="espaco"></div>
+        </div>
+
+    </div>
+    <div class="regua" style="padding-left: 100px;">
+        <div class="item-regua perigo-frio">
+            <h2>Total de valores Arendidos:</h2>
+            <h2><span id="b_numValores"></span></h2>
+        </div>
+        <div class="item-regua alerta-frio">
+            <h2>Animes Cadastrados:</h2>
+            <h2><span id="b_numAnimes"></span></h2>
+        </div>
+        <div class="item-regua ideal">
+            <h2>Animes.values() Recomenda:</h2>
+            <h2><span id="b_recomendacao"></span></h2>
+        </div>
+
+    </div>
+
+    <br>
     <div class="dash-right">
         <div class="avisos">
             <div class="container">
-                <h1>Publicar um aviso</h1>
+                <h1 style="text-decoration: underline; ">Publique um Anime e um Valor aprendido:</h1>
                 <div class="div-form">
                     <form id="form_postagem" method="post" onsubmit="return publicar()">
                         <label>
-                            Título:
+                            <span style="color: black; font-size: x-large;">Título Anime:</span>
                             <br>
                             <input name="titulo" id="titulo" maxlength="100" type="text">
                         </label>
                         <br>
                         <label>
-                            Descrição (máximo de 250 caracteres):
+                            <span style="color: black; font-size: x-large;">Valor ou Lição Aprendida:</span>
                             <br>
                             <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
                         </label>
-                        <br>
+                        <br><br>
                         <button>Enviar</button>
                     </form>
                 </div>
-                <h1>Mural de Avisos</h1>
+                <h1>Mural dos Animes</h1>
                 <div class="div-results">
                     <div id="feed_container" class="feed-container">
                     </div>
@@ -79,17 +118,17 @@
 
         <!-- MODAL -->
         <!-- <div id="div_modal" class="div-modal">
-            <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
-            </div>
-            <div id="modal_container" class="modal-container">
-                <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
-            </div>
-        </div> -->
+        <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+        </div>
+        <div id="modal_container" class="modal-container">
+            <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
+        </div>
+    </div> -->
 
         <!-- AGUARDAR -->
         <!-- <div id="div_aguardar" class="div-aguardar">
-            <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
-        </div>  -->
+        <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
+    </div>  -->
 
     </div>
 
@@ -101,33 +140,32 @@
 </html>
 
 <script>
+    var testeId = 0
+    var idUsuario = 0
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
     var numeroValores = []
     var numeroAnimes = []
-
-    var animes = []
-    var anime = ``
     var ranking = []
+    var meusValores = []
+
+    var nomeParticipante1 = ``
+    var pontosParticipante1 = 0
+    var nomeParticipante2 = ``
+    var pontosParticipante2 = 0
+    var nomeParticipante3 = ``
+    var pontosParticipante3 = 0
+
+    var animesSemRepeticao = ``
     var votos = 0
-    
-    var primeiroLugar
-    var segundoLugar = {
-        nome: ``,
-        votos: 0
-    }
-    var terceiroLugar = {
-        nome: ``,
-        votos: 0
-    }
+    var animes = []
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
     function publicar() {
-        var idUsuario = sessionStorage.ID_USUARIO;
+        idUsuario = sessionStorage.ID_USUARIO;
         var nomeUsuario = sessionStorage.NOME_USUARIO;
         var corpo = {
             titulo: form_postagem.titulo.value,
@@ -164,6 +202,7 @@
     }
 
     function editar(idAviso) {
+       
         sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
         console.log("cliquei em editar - " + idAviso);
         window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
@@ -195,7 +234,8 @@
 
     function atualizarFeed() {
         //aguardar();
-
+        testeId =  sessionStorage.ID_USUARIO
+        console.log(testeId);
         fetch("/avisos/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -231,18 +271,19 @@
                         spanTitulo.innerHTML = "Anime: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Valor: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
+                        // btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         // #########################################################################################
+
                         numeroValores.push(publicacao.descricao)
                         numeroAnimes.push(publicacao.titulo)
-                        anime = publicacao.titulo
+                        animesSemRepeticao = publicacao.titulo
                         votos = 0
                         if (animes.length == 0) {
-                            animes.push(anime)
-                        } else if (animes.indexOf(anime) < 0) {
-                            animes.push(anime)
+                            animes.push(animesSemRepeticao)
+                        } else if (animes.indexOf(animesSemRepeticao) < 0) {
+                            animes.push(animesSemRepeticao)
                         }
 
                         for (var x = 0; x < numeroAnimes.length; x++) {
@@ -257,23 +298,111 @@
                         }
 
                         ranking.push(votacao)
-
-                        primeiroLugar = ranking.reduce(function (prev, current) {
-                            return prev.votos > current.votos ? prev : current;
-                        });
-
-                        for(var y = 0; y < ranking.length; y++){
-                            if(ranking[y].votos <= primeiroLugar.votos && ranking[y].votos > terceiroLugar.votos && ranking[y].nome != primeiroLugar.nome && ranking[y].nome != terceiroLugar.nome){
-                                segundoLugar.nome = ranking[y].nome
-                                segundoLugar.votos = ranking[y].votos
+                        // VOTOS DO PARTICIPANTE 1    
+                        for (var x = 0; x < ranking.length; x++) {
+                            if (ranking[x].votos >= pontosParticipante1) {
+                                pontosParticipante1 = ranking[x].votos
+                                nomeParticipante1 = ranking[x].nome
                             }
                         }
-                        for(var z = 0; z < ranking.length; z++){
-                            if(ranking[z].votos <= segundoLugar.votos && ranking[z].votos <= primeiroLugar.votos && ranking[z].nome != segundoLugar.nome && ranking[z].nome != primeiroLugar.nome){
-                                terceiroLugar.nome = ranking[z].nome
-                                terceiroLugar.votos = ranking[z].votos 
+
+                        // VOTOS DO PARTICIPANTE 2
+                        for (var y = 0; y < ranking.length; y++) {
+                            if (nomeParticipante1 != ranking[y].nome && ranking[y].votos >= pontosParticipante2) {
+                                pontosParticipante2 = ranking[y].votos
+                                nomeParticipante2 = ranking[y].nome
+
                             }
                         }
+                        // VOTOS DO PARTICIPANTE 3
+                        for (var z = 0; z < ranking.length; z++) {
+                            if (nomeParticipante1 != ranking[z].nome && nomeParticipante2 != ranking[z].nome && ranking[z].votos >= pontosParticipante3) {
+                                nomeParticipante3 = ranking[z].nome
+                                pontosParticipante3 = ranking[z].votos
+
+                            }
+                        }
+
+                        // VALIDA COLOAÇÃO
+                        if (pontosParticipante1 >= pontosParticipante2 && pontosParticipante1 >= pontosParticipante3) {
+                            // 1° LUGAR PARTICIPANTE 1
+                            b_primeiroLugar.innerHTML = pontosParticipante1
+                            b_nomePrimeiroLugar.innerHTML = nomeParticipante1
+                            b_recomendacao.innerHTML = nomeParticipante1
+
+                            if (pontosParticipante2 >= pontosParticipante3) {
+                                // 2° LUGAR PARTICIPANTE 2
+                                b_segundoLugar.innerHTML = pontosParticipante2
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante2
+
+                                // 3° LUGAR PARTICIPANTE 3
+                                b_terceiroLugar.innerHTML = pontosParticipante3
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante3
+                            } else {
+                                // 2° LUGAR PARTICIPANTE 3
+                                b_segundoLugar.innerHTML = pontosParticipante3
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante3
+
+                                // 3° LUGAR PARTICIPANTE 2
+                                b_terceiroLugar.innerHTML = pontosParticipante2
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante2
+                            }
+                        } else if (pontosParticipante2 >= pontosParticipante1 && pontosParticipante2 >= pontosParticipante3) {
+                            // 1° LUGAR PARTICIPANTE 2
+                            b_primeiroLugar.innerHTML = pontosParticipante2
+                            b_nomePrimeiroLugar.innerHTML = nomeParticipante2
+                            b_recomendacao.innerHTML = nomeParticipante2
+
+                            if (pontosParticipante1 >= pontosParticipante3) {
+                                // 2° LUGAR PARTICIPANTE 1
+                                b_segundoLugar.innerHTML = pontosParticipante1
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante1
+
+                                // 3° LUGAR PARTICIPANTE 3
+                                b_terceiroLugar.innerHTML = pontosParticipante3
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante3
+                            } else {
+                                // 2° LUGAR PARTICIPANTE 3
+                                b_segundoLugar.innerHTML = pontosParticipante3
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante3
+
+                                // 3° LUGAR PARTICIPANTE 1
+                                b_terceiroLugar.innerHTML = pontosParticipante1
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante1
+                            }
+                        } else {
+                            // 1° LUGAR PARTICIPANTE 3
+                            b_primeiroLugar.innerHTML = pontosParticipante3
+                            b_nomePrimeiroLugar.innerHTML = nomeParticipante3
+                            b_recomendacao.innerHTML = nomeParticipante3
+
+                            if (pontosParticipante1 >= pontosParticipante2) {
+                                // 2° LUGAR PARTICIPANTE 1
+                                b_segundoLugar.innerHTML = pontosParticipante1
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante1
+
+                                // 3° LUGAR PARTICIPANTE 2
+                                b_terceiroLugar.innerHTML = pontosParticipante2
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante2
+                            } else {
+                                // 2° LUGAR PARTICIPANTE 2
+                                b_segundoLugar.innerHTML = pontosParticipante2
+                                b_nomeSegundoLugar.innerHTML = nomeParticipante2
+
+                                // 3° LUGAR PARTICIPANTE 1
+                                b_terceiroLugar.innerHTML = pontosParticipante1
+                                b_nomeTerceiroLugar.innerHTML = nomeParticipante1
+                            }
+                        }
+
+
+
+
+
+
+                        b_numValores.innerHTML = numeroValores.length
+                        b_numAnimes.innerHTML = animes.length
+
                         divPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
@@ -295,7 +424,7 @@
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnEditar);
                         divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
                     }
