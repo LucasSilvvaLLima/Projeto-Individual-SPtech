@@ -79,6 +79,11 @@
     
 }
 
+.col-4{
+    width: 60%;
+    float: right;
+    
+}
 /* BANNER MEUS VALORES */
 
 #showcase1-container{
@@ -97,7 +102,7 @@
     clear: both;
 }
 #showcase3-container{
-    padding-top: 60px;
+    /* padding-top: 30px; */
     padding-bottom: 10px;
     background-color: #c7def100;
     width: 100%;
@@ -121,11 +126,20 @@
 .feature-text{
     padding-top: 100px;
 }
-.feature-text2{
+.feature-text3{
     padding-top: 50px;
+    text-align: center;
+    font-size: 35px;
 }
 .section-title{
     width: 70%;
+    margin: auto;
+    font-weight: 200;
+    line-height: 1.5em;
+    
+}
+.section-title2{
+    width: 100%;
     margin: auto;
     font-weight: 200;
     line-height: 1.5em;
@@ -138,7 +152,7 @@
 }
 
 
-/* QUIZ */
+/* FAVORITO */
 
 #call-to-action{
     background-image: url("../assets/quiz.jpg");

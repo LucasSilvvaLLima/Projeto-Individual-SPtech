@@ -129,26 +129,26 @@
     <div id="call-to-action2">
         <div id="showcase3-container">
             <div class="showcase">
-                <div class="col-2">
-                    <div class="feature-text">
-                        <h1 class="section-title">Dos valores acima <br>
-                        Qual voê mais se identificou?
-                        <select name="" id="sel_favorito">
-                            <option value="">Escolha o seu favorito</option>
-                            <option value="Persistência">Persistência</option>
-                            <option value="Resiliência">Resiliência</option>
-                            <option value="Iniciativa">Iniciativa</option>
-                            <option value="Trabalho em Equipe">Trabalho em Equipe</option>
-                            <option value="Respeito aos Mestres">Respeito aos Mestres</option>
-                        </select>
-                        
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
+                <div class=".col-4">
+                    <div class="feature-text3">
+                        <h1 class="section-title2">Dos valores acima <br>
+                            Qual voê mais se identificou?<br>
+                        </h1><button onclick="cadastrarFavorito()">CADASTRAR</button><br>
+                            <select name="" id="sel_favorito">
+                                <option value="">Escolha o seu favorito</option>
+                                <option value="Persistência">Persistência</option>
+                                <option value="Resiliência">Resiliência</option>
+                                <option value="Iniciativa">Iniciativa</option>
+                                <option value="Trabalho em Equipe">Trabalho em Equipe</option>
+                                <option value="Respeito aos Mestres">Respeito aos Mestres</option>
+                            </select>
 
-            <div id="div_erros_login"></div>
-                    </h1><button onclick="cadastrarFavorito()">CADASTRAR</button>
-                        
+                            
+                            <div id="div_erros_login"></div>
+                        <div class="card_erro" id="cardErro">
+                            <span id="mensagem_erro"></span>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -209,184 +209,90 @@
 
 <script>
 
-function cadastrarFavorito() {
-        // aguardar();
-        idUsuario = sessionStorage.ID_USUARIO;
+    var idUsuarioFavorito = JSON.parse(localStorage.getItem('idUsuarioFavorito')) || []
+    idUsuario = sessionStorage.ID_USUARIO;
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var favorito = sel_favorito.value;
+    // aguardar();
 
-        if (favorito == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = " SELECIONE O SEU FAVORITO ";
+    idUsuarioFavorito.push(idUsuario)
 
-            setInterval(sumirMensagem, 5000)
-            finalizarAguardar();
-            return false;
+    var index = idUsuarioFavorito.indexOf(idUsuario)
+    var existeUserLocalStorage = idUsuarioFavorito[idUsuarioFavorito.indexOf(idUsuario)] >= 0
+
+
+    
+    var contador
+    if(idUsuarioFavorito[0] != idUsuario){
+        idUsuarioFavorito.splice(0, 1)
+    }
+    function cadastrarFavorito() {
+        for (contador = 0; contador <= idUsuarioFavorito; contador++) {
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        if (idUsuarioFavorito[contador] != idUsuario) {
+            localStorage.setItem('idUsuarioFavorito', JSON.stringify(idUsuarioFavorito))
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
 
-        // ################################ IR PARA ROUTS usuario/cadastrarFavorito ################################
 
-        // Enviando o valor da nova input
-        fetch(`/usuarios/cadastrarFavorito/${idUsuario}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                favoritoServer: favorito
-            })
-        }).then(function (resposta) {
+            var favorito = sel_favorito.value;
 
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                cardErro.style.display = "block";
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(function () {
-                    window.location = "pagina_inicial.html";
-                }, "3500");
-
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+            if (favorito == "") {
                 cardErro.style.display = "block"
-                mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
+                mensagem_erro.innerHTML = " SELECIONE O SEU FAVORITO ";
+
                 setInterval(sumirMensagem, 5000)
                 finalizarAguardar();
+                return false;
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
+            else {
+                setInterval(sumirMensagem, 5000)
+            }
 
-        return false;
-    }
+            // Enviando o valor da nova input
+            fetch(`/usuarios/cadastrarFavorito/${idUsuario}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    favoritoServer: favorito
+                })
+            }).then(function (resposta) {
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+                console.log("resposta: ", resposta);
 
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-    // function atualizacaoPeriodica() {
-    //     obterdados(1);
-    //     obterdados(2);
-    //     obterdados(3);
-    //     obterdados(4);
+                    setTimeout(function () {
+                        window.location = "pagina_inicial.html";
+                    }, "3500");
 
-    //     function sendData() {
-    // 		var http = new XMLHttpRequest();
-    // 		http.open('POST', 'http://localhost:3000/api/sendData', false);
-    // 		http.send(null);
-    // 	}
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                    cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = " PREENCHA TODOS OS CAMPOS ";
+                    setInterval(sumirMensagem, 5000)
+                    finalizarAguardar();
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
 
-    //     setInterval(() => {
-    // 		sendData();
-    // 	}, 2000);
-    //     setTimeout(atualizacaoPeriodica, 5000);
-    // }
+            return false;
+            function sumirMensagem() {
+                cardErro.style.display = "none"
+            }
 
-    // function obterdados(idAquario) {
-    //     fetch(`/medidas/tempo-real/${idAquario}`)
-    //         .then(resposta => {
-
-    //             if (resposta.ok) {
-    //                 resposta.json().then(resposta => {
-
-    //                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-    //                     var dados = {
-    //                         temperatura: resposta[0].temperatura,
-    //                     }
-
-    //                     alertar(resposta[0].temperatura, idAquario);
-    //                 });
-    //             } else {
-
-    //                 console.error('Nenhum dado encontrado ou erro na API');
-    //             }
-    //         })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-    //         });
-
-    // }
-
-    // function alertar(temperatura, idAquario) {
-    //     var limites = {
-    //         muito_quente: 23,
-    //         quente: 22,
-    //         ideal: 20,
-    //         frio: 10,
-    //         muito_frio: 5
-    //     };
-
-    //     var classe_temperatura = 'cor-alerta';
-
-    //     if (temperatura >= limites.muito_quente) {
-    //         classe_temperatura = 'cor-alerta perigo-quente';
-    //         console.log("caiu no 1")
-    //     }
-    //     else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
-    //         classe_temperatura = 'cor-alerta alerta-quente';
-    //         console.log("caiu no 2")
-    //     }
-    //     else if (temperatura < limites.quente && temperatura > limites.frio) {
-    //         classe_temperatura = 'cor-alerta ideal';
-    //         console.log("caiu no 3")
-    //     }
-    //     else if (temperatura <= limites.frio && temperatura > limites.muito_frio) {
-    //         classe_temperatura = 'cor-alerta alerta-frio';
-    //         console.log("caiu no 4")
-    //     }
-    //     else if (temperatura < limites.min_temperatura) {
-    //         classe_temperatura = 'cor-alerta perigo-frio';
-    //         console.log("caiu no 5")
-    //     }
-
-    //     var card;
-
-    //     if (idAquario == 1) {
-    //         temp_aquario_1.innerHTML = temperatura + "°C";
-    //         card = card_1
-    //     } else if (idAquario == 2) {
-    //         temp_aquario_2.innerHTML = temperatura + "°C";
-    //         card = card_2
-    //     } else if (idAquario == 3) {
-    //         temp_aquario_3.innerHTML = temperatura + "°C";
-    //         card = card_3
-    //     } else if (idAquario == 4) {
-    //         temp_aquario_4.innerHTML = temperatura + "°C";
-    //         card = card_4
-    //     }
-
-    //     // alterando
-    //     card.className = classe_temperatura;
-
-    // }
-
-    let navToggle = document.querySelector(".nav__toggle");
-    let navWrapper = document.querySelector(".nav__wrapper");
-
-    navToggle.addEventListener("click", function () {
-        if (navWrapper.classList.contains("active")) {
-            this.setAttribute("aria-expanded", "false");
-            this.setAttribute("aria-label", "menu");
-            navWrapper.classList.remove("active");
         } else {
-            navWrapper.classList.add("active");
-            this.setAttribute("aria-label", "close menu");
-            this.setAttribute("aria-expanded", "true");
+            alert("Não deixo")
         }
-    });
 
-
+    }
 </script>

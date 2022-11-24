@@ -44,12 +44,11 @@
             <!-- </form> -->
             <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
 
-             
             <div id="div_aguardar" class="loading-div">
                 <img src="./assets/circle-loading.gif" id="loading-gif">
             </div>
 
-
+            <div id="div_erros_login"></div>
 
         </div>
 
@@ -116,6 +115,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    aguardar();
 
                     setTimeout(function () {
                         window.location = "./dashboard/pagina_inicial.html";
