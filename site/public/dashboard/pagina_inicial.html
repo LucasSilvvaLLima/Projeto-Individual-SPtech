@@ -129,25 +129,25 @@
     <div id="call-to-action2">
         <div id="showcase3-container">
             <div class="showcase">
-                <div class=".col-4">
+                <div class="col-4">
+                    <div class="espaco"></div>
+
                     <div class="feature-text3">
                         <h1 class="section-title2">Dos valores acima <br>
-                            Qual voê mais se identificou?<br>
+                            Qual você mais se identificou?<br>
                         </h1><button onclick="cadastrarFavorito()">CADASTRAR</button><br>
-                            <select name="" id="sel_favorito">
-                                <option value="">Escolha o seu favorito</option>
-                                <option value="Persistência">Persistência</option>
-                                <option value="Resiliência">Resiliência</option>
-                                <option value="Iniciativa">Iniciativa</option>
-                                <option value="Trabalho em Equipe">Trabalho em Equipe</option>
-                                <option value="Respeito aos Mestres">Respeito aos Mestres</option>
-                            </select>
-
-                            
-                            <div id="div_erros_login"></div>
-                        <div class="card_erro" id="cardErro">
+                        <select name="" id="sel_favorito">
+                            <option value="">Escolha o seu favorito</option>
+                            <option value="Persistência">Persistência</option>
+                            <option value="Resiliência">Resiliência</option>
+                            <option value="Iniciativa">Iniciativa</option>
+                            <option value="Trabalho em Equipe">Trabalho em Equipe</option>
+                            <option value="Respeito aos Mestres">Respeito aos Mestres</option>
+                        </select>
+                        <div class="card_erro" id="cardErro" style="background-color:  #e07730;  border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;width: 500px;height: 100px;display: none; padding-top: 20px;">
                             <span id="mensagem_erro"></span>
                         </div>
+
 
                     </div>
                 </div>
@@ -208,21 +208,18 @@
 </html>
 
 <script>
+    // aguardar();
 
     var idUsuarioFavorito = JSON.parse(localStorage.getItem('idUsuarioFavorito')) || []
     idUsuario = sessionStorage.ID_USUARIO;
-
-    // aguardar();
 
     idUsuarioFavorito.push(idUsuario)
 
     var index = idUsuarioFavorito.indexOf(idUsuario)
     var existeUserLocalStorage = idUsuarioFavorito[idUsuarioFavorito.indexOf(idUsuario)] >= 0
 
-
-    
     var contador
-    if(idUsuarioFavorito[0] != idUsuario){
+    if (idUsuarioFavorito[0] != idUsuario) {
         idUsuarioFavorito.splice(0, 1)
     }
     function cadastrarFavorito() {
@@ -265,7 +262,7 @@
 
                 if (resposta.ok) {
                     cardErro.style.display = "block";
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    mensagem_erro.innerHTML = "CADASTRO REALIZADO COM SUCESSO ";
 
                     setTimeout(function () {
                         window.location = "pagina_inicial.html";
@@ -286,13 +283,18 @@
             });
 
             return false;
-            function sumirMensagem() {
-                cardErro.style.display = "none"
-            }
 
         } else {
-            alert("Não deixo")
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "SÓ É POSSIVEL ESCOLHER UM FAVORITO ";
+            setInterval(sumirMensagem, 5000)
+            limparFormulario();
+            finalizarAguardar();
         }
 
     }
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
 </script>
