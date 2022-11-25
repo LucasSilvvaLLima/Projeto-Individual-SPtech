@@ -106,7 +106,7 @@
                     </form>
                 </div>
                 <h1>Mural dos Animes</h1>
-                <div class="div-results">
+                <div class="div-results" style="font-size: 25px; font-family: Arial, Helvetica, sans-serif;">
                     <div id="feed_container" class="feed-container">
                     </div>
                 </div>
@@ -140,7 +140,6 @@
 </html>
 
 <script>
-    var testeId = 0
     var idUsuario = 0
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -234,8 +233,7 @@
 
     function atualizarFeed() {
         //aguardar();
-        testeId =  sessionStorage.ID_USUARIO
-        console.log(testeId);
+       
         fetch("/avisos/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -267,16 +265,17 @@
                         var btnDeletar = document.createElement("button");
 
 
-                        spanID.innerHTML = "Post de Número: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Anime: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Valor: <b>" + publicacao.descricao + "</b>";
+                        spanID.innerHTML = `Post de Número: <b style="color: white">${publicacao.idAviso}</b>`
+                        spanTitulo.innerHTML = `Anime: <b style="color: white">${publicacao.titulo}</b>`
+                        spanNome.innerHTML = `Autor: <b style="color: white">${publicacao.nome}</b>`
+                        divDescricao.innerHTML = `Valor: <b style="color: white">${publicacao.descricao}</b>`
                         // btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         // #########################################################################################
 
                         numeroValores.push(publicacao.descricao)
+                        
                         numeroAnimes.push(publicacao.titulo)
                         animesSemRepeticao = publicacao.titulo
                         

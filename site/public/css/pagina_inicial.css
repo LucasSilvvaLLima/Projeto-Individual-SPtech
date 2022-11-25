@@ -161,6 +161,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     height: 500px;
+    opacity: 90%;
 }
 #call-to-action2{
     background-image: url("../assets/favorito.jpg");
@@ -176,6 +177,7 @@
     text-align: center;
     margin-top: 0;
     padding-top: 100px;
+
 }
 .col-1{
     width: 80%;
@@ -198,7 +200,17 @@
 .espaco{
     padding-left: 100%;
 }
-
+.select {
+    width: 280px;
+    height: 30px;
+    /* border: 1px solid #999; */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(34, 34, 220);
+    background-color: #eee;
+    border-radius: 15px;
+}
 /* FINAL FAVORITO */
 
 .signupBTN{

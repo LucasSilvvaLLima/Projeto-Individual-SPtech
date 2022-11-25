@@ -48,16 +48,18 @@
             <p></p><span style="text-decoration: underline coral;">Alguns bons exemplos:</span>
         </h1>
         <div class="feature-content">
-            <div class="col-3" style="padding-top: 25px">
-                <img style="width: 100%; border-radius: 8px;" src="../assets/card1.jpg">
+            <div class="col-3">
+                <span style="text-decoration: underline; font-size: xx-large;">Persistência</span>
+                <img style="width: 100%; border-radius: 8px; padding-top: 10px" src="../assets/card1.jpg">
                 <h3>Rock Lee (Naruto)</h3>
                 <p>"A lição de vida que podemos aprender com o Rock Lee é que aquele que trabalha duro pode superar um
                     gênio, mas, de nada adianta trabalho duro se você não confia em você mesmo. Mesmo sem ser
                     considerado um gênio ele provou que nada é impossível se nós tivermos dedicação, disciplina e amor
                     pelo que fazemos"</p>
             </div>
-            <div class="col-3" style="padding-top: 25px">
-                <img style="width: 100%; ; border-radius: 8px;" src="../assets/card2.jpg">
+            <div class="col-3">
+                <span style="text-decoration: underline; font-size: xx-large;">Resiliência</span>
+                <img style="width: 100%; ; border-radius: 8px; padding-top: 10px" src="../assets/card2.jpg">
                 <h3>Ash Ketchum (Pokemon)</h3>
                 <p>"A lição que o Ash pode nos ensinar e de nunca desistir dos seus sonhos não importa quantas vezes
                     você falhe, o sonho dele era se tornar campeão mundial e diversas vezes ele chegou a disputar a
@@ -65,8 +67,9 @@
                     nunca desistiu. Conquistando o tão sonhado titulo de Campeão Mundial após a 7.º final que ele
                     disputou."</p>
             </div>
-            <div class="col-3" style="padding-top: 25px">
-                <img style="width: 100%; border-radius: 8px;" src="../assets/card3.jpg">
+            <div class="col-3">
+                <span style="text-decoration: underline; font-size: xx-large;">Iniciativa</span>
+                <img style="width: 100%; border-radius: 8px; padding-top: 10px" src="../assets/card3.jpg">
                 <h3>Monkey D. Luffy (One Piece)</h3>
                 <p>"A lição que podemos aprender com o Luffy é de que se você tiver um sonho de conquistar alguma coisa,
                     apenas comece, não espere ter as melhores condições e nem os melhores aparelhos. Faça como o Luffy
@@ -130,32 +133,28 @@
         <div id="showcase3-container">
             <div class="showcase">
                 <div class="col-4">
-                    <div class="espaco"></div>
-
-                    <div class="feature-text3">
+                    <div class="feature-text3" style="display: flex; flex-direction: column; align-items: center;">
                         <h1 class="section-title2">Dos valores acima <br>
                             Qual você mais se identificou?<br>
-                        </h1><button onclick="cadastrarFavorito()">CADASTRAR</button><br>
-                        <select name="" id="sel_favorito">
+                        </h1>
+                        <button onclick="cadastrarFavorito()">CADASTRAR</button><br>
+                        <select name="" id="sel_favorito" class="select">
                             <option value="">Escolha o seu favorito</option>
                             <option value="Persistência">Persistência</option>
                             <option value="Resiliência">Resiliência</option>
                             <option value="Iniciativa">Iniciativa</option>
                             <option value="Trabalho em Equipe">Trabalho em Equipe</option>
                             <option value="Respeito aos Mestres">Respeito aos Mestres</option>
-                        </select>
-                        <div class="card_erro" id="cardErro" style="background-color:  #e07730;  border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;width: 500px;height: 100px;display: none; padding-top: 20px;">
+                        </select><br>
+                        <div class="card_erro" id="cardErro" style="background-color:#0D63E3;  border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;width: 500px;height: 100px;display: none; padding-top: 20px;">
                             <span id="mensagem_erro"></span>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-            <br>
         </div>
     </div>
-    <br><br>
+    <br>
     <!-- FIM FAVORIO -->
 
 
@@ -163,8 +162,8 @@
     <div id="call-to-action">
         <div class="showcase">
             <div class="col-1">
-                <h1 class="action-title">Você já aprendeu algum valor com animes?</h1>
-                <p>Contenos qual foi o anime e o que ele te ensinou</p>
+                <h1 class="action-title" style="font-family: 'Times New Roman', Times, serif">Você já aprendeu algum valor com animes?</h1>
+                <p style="font-size: xx-large;">Contenos qual foi o anime e o que ele te ensinou!</p>
                 <p style="text-align: center;"><a href="./mural.html" class="signupBTN">Cadastrar</a></p>
             </div>
         </div>
@@ -287,7 +286,7 @@
         } else {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "SÓ É POSSIVEL ESCOLHER UM FAVORITO ";
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 8000)
             limparFormulario();
             finalizarAguardar();
         }
