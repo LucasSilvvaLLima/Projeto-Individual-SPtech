@@ -17,10 +17,10 @@
     <!-- INICIO DA HEADER -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <nav class="nav">
-
-            </nav>
             <span href="#" class="brand">Bem Vindo <span id="b_usuario">usuário</span></span>
+            <a href="#tips" style="align-items: flex-end;font-weight: bold; font-size: 20px;"><img src="" style="width: 30px; display: flex; align-items: center;">Favorito</a>
+            <a href="#tips2" style="align-items: flex-end;font-weight: bold; font-size: 20px;"><img src="" style="width: 30px; display: flex; align-items: center;">Mural Animes</a>
+            <!-- Utilize esta Id com # no link para ir até este local -->
             <div class="button button--icon" aria-label="Sign in">
                 <img src="../assets/sair.png" alt="" style="width: 30px; display: flex; align-items: center"
                     onclick="limparSessao()">
@@ -94,8 +94,9 @@
                         Os animes mostram que o trabalho em equipe é importante, porque muitas vezes não somos capazes
                         de fazer tudo sozinhos, por mais fortes que podemos ser afinal, o ser humano não é como o
                         Superman, não somos invencíveis ou invulneráveis. <br><br>
-                        Os animes que mostram com mais evidência isso são Naruto (mostrando que todos sem exceção têm
-                        sua importância, e é essencial para o sucesso da missão).
+                        O anime que mostra com mais evidência isso é o Naruto (mostrando que todos os membros da equipe
+                        têm
+                        sua importância, e são essenciais para o sucesso da missão).
                     </p>
                 </div>
             </div>
@@ -109,7 +110,7 @@
                 <div class="feature-text2">
                     <h1 class="section-title">Respeito aos Mestres</h1>
                     <p class="section-left">
-                        "Vejo como os animes como Naruto, Saint Saiya e Dragon ball mostram o grande respeito que os
+                        "Vejo como os animes como Naruto, Saint Saiya e Dragon Ball mostram o grande respeito que os
                         alunos tem por seus professores. <br><br>
                         Pois são eles que passam valiosas lições para que amadureçam e se tornem mais fortes e capazes
                         de realizar grandes feitos. <br><br>
@@ -129,78 +130,84 @@
     <!-- FIM BANNERS VALORES ANIMES-->
 
     <!-- INICIO FAVORIO -->
-    <div id="call-to-action2">
-        <div id="showcase3-container">
-            <div class="showcase">
-                <div class="col-4">
-                    <div class="feature-text3" style="display: flex; flex-direction: column; align-items: center;">
-                        <h1 class="section-title2">Dos valores acima <br>
-                            Qual você mais se identificou?<br>
-                        </h1>
-                        <button onclick="cadastrarFavorito()">CADASTRAR</button><br>
-                        <select name="" id="sel_favorito" class="select">
-                            <option value="">Escolha o seu favorito</option>
-                            <option value="Persistência">Persistência</option>
-                            <option value="Resiliência">Resiliência</option>
-                            <option value="Iniciativa">Iniciativa</option>
-                            <option value="Trabalho em Equipe">Trabalho em Equipe</option>
-                            <option value="Respeito aos Mestres">Respeito aos Mestres</option>
-                        </select><br>
-                        <div class="card_erro" id="cardErro" style="background-color:#0D63E3;  border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;width: 500px;height: 100px;display: none; padding-top: 20px;">
-                            <span id="mensagem_erro"></span>
+    <div id="tips" style="transition: all .4s;"><br><br>
+        <div id="call-to-action2">
+            <div id="showcase3-container">
+                <div class="showcase">
+                    <div class="col-4">
+                        <div class="feature-text3" style="display: flex; flex-direction: column; align-items: center;">
+                            <h1 class="section-title2">Dos valores acima <br>
+                                Qual você mais se identificou?<br>
+                            </h1>
+                            <button onclick="cadastrarFavorito()">CADASTRAR</button><br>
+                            <select name="" id="sel_favorito" class="select">
+                                <option value="">Escolha o seu favorito</option>
+                                <option value="Persistência">Persistência</option>
+                                <option value="Resiliência">Resiliência</option>
+                                <option value="Iniciativa">Iniciativa</option>
+                                <option value="Trabalho em Equipe">Trabalho em Equipe</option>
+                                <option value="Respeito aos Mestres">Respeito aos Mestres</option>
+                            </select><br>
+                            <div class="card_erro" id="cardErro"
+                                style="background-color:#0D63E3;  border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;width: 500px;height: 100px;display: none; padding-top: 20px;">
+                                <span id="mensagem_erro"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <!-- FIM FAVORIO -->
+        </a>
+        <!-- FIM FAVORIO -->
 
-
-    <!-- INICIO MURAL DE VALORES -->
-    <div id="call-to-action">
-        <div class="showcase">
-            <div class="col-1">
-                <h1 class="action-title" style="font-family: 'Times New Roman', Times, serif">Você já aprendeu algum valor com animes?</h1>
-                <p style="font-size: xx-large;">Contenos qual foi o anime e o que ele te ensinou!</p>
-                <p style="text-align: center;"><a href="./mural.html" class="signupBTN">Cadastrar</a></p>
+        <!-- INICIO MURAL DE VALORES -->
+        <div id="tips2" style="transition: all .4s;"><br>
+            <div id="call-to-action">
+                <div class="showcase">
+                    <div class="col-1">
+                        <h1 class="action-title" style="font-family: 'Times New Roman', Times, serif">Você já aprendeu
+                            algum
+                            valor com animes?</h1>
+                        <p style="font-size: xx-large;">Conte-nos qual foi o anime e o que ele te ensinou!</p>
+                        <p style="text-align: center;"><a href="./mural.html" class="signupBTN">Cadastrar</a></p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- FIM MURAL DE VALORES -->
+        <!-- FIM MURAL DE VALORES -->
 
-    <!-- INICIO FOOTER -->
-    <footer>
-        <a href="https://github.com/LucasSilvvaLLima/Projeto-Individual-SPtech" target="_blank">
-            <div class="social-footer">
-                <div class="center">
-                    <img src="../assets/github.png" alt="gitHub" height="52" width="52">
+        <!-- INICIO FOOTER -->
+        <footer>
+            <a href="https://github.com/LucasSilvvaLLima/Projeto-Individual-SPtech" target="_blank">
+                <div class="social-footer">
+                    <div class="center">
+                        <img src="../assets/github.png" alt="gitHub" height="52" width="52">
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <a href="https://www.linkedin.com/in/lucas-analistasistemas/" target="_blank" rel="noopener noreferrer">
-            <div class="social-footer">
-                <div class="center">
-                    <img src="../assets/facebook.png" alt="facebook" height="52" width="52">
+            <a href="https://www.linkedin.com/in/lucas-analistasistemas/" target="_blank" rel="noopener noreferrer">
+                <div class="social-footer">
+                    <div class="center">
+                        <img src="../assets/facebook.png" alt="facebook" height="52" width="52">
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <a href="https://www.instagram.com/luckas_sillva_lima/" target="_blank" rel="noopener noreferrer">
-            <div class="social-footer">
-                <div class="center">
-                    <img src="../assets/instagram.png" alt="instagram" height="52" width="52">
+            <a href="https://www.instagram.com/luckas_sillva_lima/" target="_blank" rel="noopener noreferrer">
+                <div class="social-footer">
+                    <div class="center">
+                        <img src="../assets/instagram.png" alt="instagram" height="52" width="52">
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <h3 style="text-align: center; padding-top: 500px; color: rgb(255, 255, 255); font-size: 25px;">Anime.values()
-        </h3>
-        <span class="copyright">&copy; Copyright 2022 - Feito por &hearts; Lucas Silva Lima</span>
-    </footer>
-    <!-- FIM FOOTER -->
+            <h3 style="text-align: center; padding-top: 500px; color: rgb(255, 255, 255); font-size: 25px;">
+                Anime.values()
+            </h3>
+            <span class="copyright">&copy; Copyright 2022 - Feito por &hearts; Lucas Silva Lima</span>
+        </footer>
+        <!-- FIM FOOTER -->
 
 </body>
 
