@@ -17,7 +17,7 @@
     <!-- INICIO DA HEADER -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <span href="#" class="brand">Bem Vindo <span id="b_usuario">usuário</span></span>
+            <span href="#" class="brand">Bem Vindo(a) <span id="b_usuario">usuário</span></span>
             <a href="#tips" style="align-items: flex-end;font-weight: bold; font-size: 20px;"><img src="" style="width: 30px; display: flex; align-items: center;">Favorito</a>
             <a href="#tips2" style="align-items: flex-end;font-weight: bold; font-size: 20px;"><img src="" style="width: 30px; display: flex; align-items: center;">Mural Animes</a>
             <!-- Utilize esta Id com # no link para ir até este local -->
@@ -60,7 +60,7 @@
             <div class="col-3">
                 <span style="text-decoration: underline; font-size: xx-large;">Resiliência</span>
                 <img style="width: 100%; ; border-radius: 8px; padding-top: 10px" src="../assets/card2.jpg">
-                <h3>Ash Ketchum (Pokemon)</h3>
+                <h3>Ash Ketchum (Pokémon)</h3>
                 <p>"A lição que o Ash pode nos ensinar e de nunca desistir dos seus sonhos não importa quantas vezes
                     você falhe, o sonho dele era se tornar campeão mundial e diversas vezes ele chegou a disputar a
                     final, mas sempre passava muito perto, e por mais que ele tenha desanimado em alguns momentos ele
@@ -231,7 +231,7 @@
     function cadastrarFavorito() {
         for (contador = 0; contador <= idUsuarioFavorito; contador++) {
         }
-        if (idUsuarioFavorito[contador] != idUsuario) {
+        if (idUsuarioFavorito[0] != idUsuario) {
             localStorage.setItem('idUsuarioFavorito', JSON.stringify(idUsuarioFavorito))
             //Recupere o valor da nova input pelo nome do id
             // Agora vá para o método fetch logo abaixo
@@ -293,7 +293,7 @@
         } else {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "SÓ É POSSIVEL ESCOLHER UM FAVORITO ";
-            setInterval(sumirMensagem, 8000)
+            setInterval(sumirMensagem, 6000)
             limparFormulario();
             finalizarAguardar();
         }
