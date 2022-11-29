@@ -229,9 +229,7 @@
         idUsuarioFavorito.splice(0, 1)
     }
     function cadastrarFavorito() {
-        for (contador = 0; contador <= idUsuarioFavorito; contador++) {
-        }
-        if (idUsuarioFavorito[contador] != idUsuario) {
+        if (idUsuarioFavorito[1] != idUsuario) {
             localStorage.setItem('idUsuarioFavorito', JSON.stringify(idUsuarioFavorito))
             //Recupere o valor da nova input pelo nome do id
             // Agora vá para o método fetch logo abaixo
